@@ -1,5 +1,7 @@
 package com.coroutines.sample.model.dataModel
 
 
-
-class DataModelItem(var title:String ? = "", var discription: String ? = "", var imageURL : String ?= "")
+/**
+ * Data model class to map the API values to the list item values
+ */
+class DataModelItem(var title:String ? = "",var imageURL : String ?= "")

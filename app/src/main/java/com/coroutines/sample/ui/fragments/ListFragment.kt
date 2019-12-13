@@ -14,11 +14,13 @@ import com.coroutines.sample.R
 
 import com.coroutines.sample.databinding.ListFragmentBinding
 import com.coroutines.sample.viewmodels.ListViewModel
-import com.coroutines.sample.adapters.RecyclerviewAdapter
+import com.coroutines.sample.adapters.RecyclerViewAdapter
 import com.coroutines.sample.model.dataModel.DataModelItem
 import com.coroutines.sample.utils.networkutils.NetworkUtility
 
-
+/**
+ * Fragment that displays the list of items from API response
+ */
 class ListFragment : Fragment() {
     private lateinit var binding: ListFragmentBinding
 
@@ -54,7 +56,7 @@ class ListFragment : Fragment() {
      *
      * */
     private fun setPullToRefreshListener() {
-        binding.simpleSwipeRefreshLayout.setOnRefreshListener { callAPI() }
+        binding.swipeRefreshLayout.setOnRefreshListener { callAPI() }
     }
 
     /*
@@ -63,9 +65,9 @@ class ListFragment : Fragment() {
     private fun initObserver() {
         viewModel.getResponseList().observe(viewLifecycleOwner, Observer {
             if (!it.isNullOrEmpty()) {
-                binding.simpleSwipeRefreshLayout.isRefreshing = false
+                binding.swipeRefreshLayout.isRefreshing = false
                 binding.progressBar.visibility = View.GONE
-                binding.simpleSwipeRefreshLayout.visibility = View.VISIBLE
+                binding.swipeRefreshLayout.visibility = View.VISIBLE
                 setupRecyclerView(it)
             }
         })
@@ -95,7 +97,7 @@ class ListFragment : Fragment() {
             viewModel.init()
         } else {
             Toast.makeText(mContext, getString(R.string.internet_alert), Toast.LENGTH_SHORT).show()
-            binding.simpleSwipeRefreshLayout.isRefreshing = false
+            binding.swipeRefreshLayout.isRefreshing = false
         }
     }
 
@@ -106,10 +108,10 @@ class ListFragment : Fragment() {
     private fun setupRecyclerView(rowList: MutableList<DataModelItem>?) {
         if (binding.recyclerView.adapter == null) {
             binding.recyclerView.layoutManager = (LinearLayoutManager(context))
-            binding.recyclerView.adapter = RecyclerviewAdapter(rowList)
+            binding.recyclerView.adapter = RecyclerViewAdapter(rowList)
 
         } else {
-            (binding.recyclerView.adapter as RecyclerviewAdapter).notifyDataSetChanged()
+            (binding.recyclerView.adapter as RecyclerViewAdapter).notifyDataSetChanged()
         }
     }
 }

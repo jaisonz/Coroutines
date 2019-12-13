@@ -6,17 +6,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.coroutines.sample.databinding.RecyclerviewItemBinding
 import com.coroutines.sample.model.dataModel.DataModelItem
 
+/**
+ * RecyclerViewAdapter class to display the bing the API response list to View
+ */
+class RecyclerViewAdapter(private var apiResponse: MutableList<DataModelItem>? = null) :
+    RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>() {
 
-class RecyclerviewAdapter(private var apiResponse: MutableList<DataModelItem>? = null) :
-    RecyclerView.Adapter<RecyclerviewAdapter.RecyclerViewholder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewholder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = RecyclerviewItemBinding.inflate(inflater, parent, false)
-        return RecyclerViewholder(binding)
+        return RecyclerViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: RecyclerViewholder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         if (apiResponse != null && apiResponse!!.size > 0) {
             holder.bind(apiResponse!![position])
         }
@@ -30,7 +32,10 @@ class RecyclerviewAdapter(private var apiResponse: MutableList<DataModelItem>? =
         }
     }
 
-    class RecyclerViewholder(bindingItem: RecyclerviewItemBinding) : RecyclerView.ViewHolder(bindingItem.root) {
+    /**
+     * ViewHolder class to map the the list item to the data
+     */
+    class RecyclerViewHolder(bindingItem: RecyclerviewItemBinding) : RecyclerView.ViewHolder(bindingItem.root) {
         private var binding: RecyclerviewItemBinding? = null
 
         init {

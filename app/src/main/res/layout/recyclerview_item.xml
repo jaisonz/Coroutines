@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tool="http://schemas.android.com/tools">
 
     <data>
         <variable name="datamodel" type="com.coroutines.sample.model.dataModel.DataModelItem"/>
     </data>
 
     <androidx.cardview.widget.CardView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tool="http://schemas.android.com/apk/res-auto"
             tool:cardCornerRadius="@dimen/dimen_5dp"
             tool:cardElevation="@dimen/dimen_5dp"
             tool:cardUseCompatPadding="true"
+            android:layout_margin="@dimen/dimen_5dp"
             tool:cardBackgroundColor="@color/color_ffffff"
             android:background="@color/color_ffffff"
             android:layout_height="wrap_content"
@@ -21,13 +21,14 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:src="@drawable/kotlin_icon"
-                    android:id="@+id/image"
-                    android:layout_width="@dimen/dimen_50dp"
-                    android:layout_height="@dimen/dimen_50dp"
-                    android:scaleType="centerCrop"
-                    android:padding="@dimen/dimen_10dp"
-                    bind:imageUrl="@{datamodel.imageURL}"/>
+                        android:src="@drawable/kotlin_icon"
+                        android:id="@+id/image"
+                        android:layout_width="@dimen/dimen_50dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:scaleType="centerCrop"
+                        android:padding="@dimen/dimen_10dp"
+                        bind:imageUrl="@{datamodel.imageURL}"
+                        android:contentDescription="@string/list_icon"/>
 
                 <TextView
                       android:id="@+id/title"

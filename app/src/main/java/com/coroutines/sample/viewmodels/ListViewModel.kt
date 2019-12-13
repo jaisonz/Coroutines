@@ -12,12 +12,13 @@ import com.coroutines.sample.model.Rows
 import com.coroutines.sample.model.dataModel.DataModelItem
 import com.coroutines.sample.utils.networkutils.APIEndpoint
 import com.coroutines.sample.webservice.RetrofitService
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-
+/**
+ * ListViewModel class calls the API and update the UI with LiveData
+ */
 class ListViewModel(application: Application) : BaseViewModel(application) {
-    private var responseApi: APIEndpoint = RetrofitService.cteateService(APIEndpoint::class.java)
+    private var responseApi: APIEndpoint = RetrofitService.createService(APIEndpoint::class.java)
     private var errorMessege: MutableLiveData<String> = MutableLiveData()
     private var response: MutableLiveData<MutableList<DataModelItem>> = MutableLiveData()
     private var title: MutableLiveData<String> = MutableLiveData()
@@ -28,10 +29,10 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
         }
     }
 
-
     fun getResponseList(): LiveData<MutableList<DataModelItem>> = response
     fun getErrorLiveData(): LiveData<String> = errorMessege
     fun getTitle(): LiveData<String> = title
+
     /*
     * Used to call api via retrofit instance using coroutine
     * */
@@ -63,7 +64,7 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
                     val imageURL = getImageURL(row)
                     when {
                         title == null && description == null && imageURL == null -> return@forEach
-                        else -> rows?.add(DataModelItem(title, description, imageURL))
+                        else -> rows?.add(DataModelItem(title, imageURL))
                     }
                 }
         }
@@ -71,6 +72,9 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
 
     }
 
+    /**
+     * Returns the imageUrl of a row
+     */
     private fun getImageURL(row: Rows): String? {
         when {
             row.imageHref != null && !TextUtils.isEmpty(row.imageHref) -> return row.imageHref
@@ -78,6 +82,9 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
         return null
     }
 
+    /**
+     * Returns Description for a row item
+     */
     private fun getDescription(row: Rows, noDataString: String?): String? {
         when {
             row.description != null && !TextUtils.isEmpty(row.description) ->
@@ -88,6 +95,9 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
         return null
     }
 
+    /**
+     * Returns the title from the row item
+     */
     private fun getTitle(row: Rows): String? {
         when {
             row.title != null && !TextUtils.isEmpty(row.title) -> return row.title

@@ -4,7 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import retrofit2.Response
 
-
+/**
+ * BaseViewModel class
+ */
 open class BaseViewModel(application:Application): AndroidViewModel(application){
     protected fun <T> processResponse(response: Response<T>): Pair<T?, Any?> {
         return try {

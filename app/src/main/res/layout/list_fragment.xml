@@ -1,42 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable name="listVM" type="com.coroutines.sample.viewmodels.ListViewModel">
-
-        </variable>
+        <variable name="listVM" type="com.coroutines.sample.viewmodels.ListViewModel"/>
     </data>
+
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/color_ffffff">
-        <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/color_0d47a1"
-                app:titleTextColor="@color/color_ffffff">
-        </androidx.appcompat.widget.Toolbar>
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-            <ProgressBar
-                    android:id="@+id/progressBar"
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_50dp"
-                    android:layout_gravity="center_vertical"
-                    style="?android:attr/progressBarStyle"
-                    android:indeterminate="true"
-                    android:visibility="visible"/>
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@+id/simpleSwipeRefreshLayout"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/color_0d47a1"
+                    app:titleTextColor="@color/color_ffffff">
+            </androidx.appcompat.widget.Toolbar>
+            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone">
+                    android:orientation="horizontal">
+                <ProgressBar
+                        android:id="@+id/progress_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_gravity="center_vertical"
+                        style="?android:attr/progressBarStyle"
+                        android:indeterminate="true"
+                        android:visibility="visible"/>
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/swipe_refresh_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone">
                 <androidx.recyclerview.widget.RecyclerView
                         android:layout_marginTop="@dimen/dimen_10dp"
                         android:id="@+id/recycler_view"
