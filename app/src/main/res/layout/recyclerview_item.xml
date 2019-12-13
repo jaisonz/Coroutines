@@ -21,6 +21,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:src="@drawable/kotlin_icon"
                     android:id="@+id/image"
                     android:layout_width="@dimen/dimen_50dp"
                     android:layout_height="@dimen/dimen_50dp"

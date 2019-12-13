@@ -13,13 +13,12 @@ object DataBindingUtils {
     @JvmStatic
     @BindingAdapter("bind:imageUrl")
     fun loadImage(view: ImageView, imageUrl: String?) {
-        view.setImageResource(R.drawable.ic_landscape_black_24dp)
         imageUrl?.run {
             Glide
                 .with(view.context)
                 .load(imageUrl)
                 .centerCrop()
-                .placeholder(R.drawable.ic_landscape_black_24dp)
+                .placeholder(R.drawable.kotlin_icon)
                 .into(view)
         }
     }

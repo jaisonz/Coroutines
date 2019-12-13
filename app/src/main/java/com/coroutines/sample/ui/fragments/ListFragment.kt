@@ -94,7 +94,7 @@ class ListFragment : Fragment() {
         if (NetworkUtility.isNetworkAvailable(mContext!!)) {
             viewModel.init()
         } else {
-            Toast.makeText(mContext, getString(R.string.Internet_alert), Toast.LENGTH_SHORT).show()
+            Toast.makeText(mContext, getString(R.string.internet_alert), Toast.LENGTH_SHORT).show()
             binding.simpleSwipeRefreshLayout.isRefreshing = false
         }
     }
