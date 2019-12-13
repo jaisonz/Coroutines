@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="datamodel" type="com.coroutines.sample.model.dataModel.DataModelItem"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tool="http://schemas.android.com/apk/res-auto"
+            tool:cardCornerRadius="@dimen/dimen_5dp"
+            tool:cardElevation="@dimen/dimen_5dp"
+            tool:cardUseCompatPadding="true"
+            tool:cardBackgroundColor="@color/color_ffffff"
+            android:background="@color/color_ffffff"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="@dimen/dimen_50dp"
+                    android:layout_height="@dimen/dimen_50dp"
+                    android:scaleType="centerCrop"
+                    android:padding="@dimen/dimen_10dp"
+                    bind:imageUrl="@{datamodel.imageURL}"/>
+
+                <TextView
+                      android:id="@+id/title"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:textSize="@dimen/dimen_16sp"
+                      android:textColor="@color/color_000000"
+                      android:text="@{datamodel.title}"
+                      android:padding="@dimen/dimen_10dp"/>
+
+            </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
